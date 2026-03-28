@@ -1,0 +1,30 @@
+name: 記事自動生成
+
+on:
+  schedule:
+    - cron: '0 21 * * *'  # 毎日 06:00 JST（UTC 21:00）
+  workflow_dispatch:       # 手動実行も可能
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+
+      - name: Python セットアップ
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 依存パッケージをインストール
+        run: pip install anthropic requests python-dotenv
+
+      - name: 記事を生成
+        run: python generate_content.py
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_DASHBOARD_REPO: sekitokyogenome-svg/content-dashboard
+          GITHUB_ZENN_REPO: sekitokyogenome-svg/zenn-content

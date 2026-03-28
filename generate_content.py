@@ -1,19 +1,23 @@
 """
 記事生成スクリプト
-- themes.csvから次のテーマを取得
+- themes.csvから次のテーマを取得（GitHub API）
 - Claude APIで記事とThreads投稿文を生成
-- zenn-content/articles/ に保存（published: false）
-- queue.json にレビュー待ちエントリを追加
+- zenn-content/articles/ に保存（GitHub API、published: false）
+- queue.json にレビュー待ちエントリを追加（GitHub API）
 
 実行方法:
   python generate_content.py
 
 環境変数:
-  ANTHROPIC_API_KEY  : Claude APIキー
+  ANTHROPIC_API_KEY       : Claude APIキー
+  GITHUB_TOKEN            : GitHub Personal Access Token（repo スコープ）
+  GITHUB_DASHBOARD_REPO   : content-dashboard リポジトリ名（例: user/content-dashboard）
+  GITHUB_ZENN_REPO        : zenn-content リポジトリ名（例: user/zenn-content）
 """
 
 import base64
 import csv
+import io
 import json
 import os
 import re
@@ -27,36 +31,14 @@ from dotenv import load_dotenv
 
 load_dotenv(Path(__file__).parent / ".env")
 
-BASE = Path(__file__).parent
-ZENN_REPO_LOCAL = BASE.parent / "zenn-content"
-THEMES_CSV = ZENN_REPO_LOCAL / "themes.csv"
-ARTICLES_DIR = ZENN_REPO_LOCAL / "articles"
-
 ZENN_USER = "web_benriya"
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
 DASHBOARD_REPO = os.getenv("GITHUB_DASHBOARD_REPO", "sekitokyogenome-svg/content-dashboard")
+ZENN_REPO = os.getenv("GITHUB_ZENN_REPO", "sekitokyogenome-svg/zenn-content")
 GH_HEADERS = {
     "Authorization": f"token {GITHUB_TOKEN}",
     "Accept": "application/vnd.github.v3+json",
 }
-
-
-def gh_get_file(repo, path):
-    resp = req.get(f"https://api.github.com/repos/{repo}/contents/{path}", headers=GH_HEADERS)
-    if resp.status_code == 200:
-        data = resp.json()
-        return base64.b64decode(data["content"]).decode("utf-8"), data["sha"]
-    return None, None
-
-
-def gh_put_file(repo, path, content, sha, message):
-    encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
-    payload = {"message": message, "content": encoded}
-    if sha:
-        payload["sha"] = sha
-    resp = req.put(f"https://api.github.com/repos/{repo}/contents/{path}",
-                   headers=GH_HEADERS, json=payload)
-    return resp.json()
 
 ARTICLE_SYSTEM_PROMPT = """
 あなたはGA4・BigQuery・Claude Codeを専門とするWEBコンサルタントです。
@@ -80,7 +62,7 @@ GA4 BigQueryのSQLで使う正しいフィールド名：
 """
 
 THREADS_SYSTEM_PROMPT = """
-Threads（@seiyaseki）への投稿文を作成してください。
+Threads（@delta11235813）への投稿文を作成してください。
 
 ルール：
 - 500文字以内
@@ -92,6 +74,35 @@ Threads（@seiyaseki）への投稿文を作成してください。
 - フランクで読みやすいトーン
 """
 
+
+# ── GitHub API ヘルパー ──────────────────────────────────────
+
+def gh_get_file(repo, path):
+    resp = req.get(
+        f"https://api.github.com/repos/{repo}/contents/{path}",
+        headers=GH_HEADERS,
+    )
+    if resp.status_code == 200:
+        data = resp.json()
+        content = base64.b64decode(data["content"]).decode("utf-8")
+        return content, data["sha"]
+    return None, None
+
+
+def gh_put_file(repo, path, content, sha, message):
+    encoded = base64.b64encode(content.encode("utf-8")).decode("utf-8")
+    payload = {"message": message, "content": encoded}
+    if sha:
+        payload["sha"] = sha
+    resp = req.put(
+        f"https://api.github.com/repos/{repo}/contents/{path}",
+        headers=GH_HEADERS,
+        json=payload,
+    )
+    return resp.json()
+
+
+# ── キュー操作 ──────────────────────────────────────────────
 
 def load_queue():
     content, sha = gh_get_file(DASHBOARD_REPO, "queue.json")
@@ -105,16 +116,15 @@ def save_queue(queue, sha):
     gh_put_file(DASHBOARD_REPO, "queue.json", content, sha, "update: queue.json")
 
 
+# ── テーマ取得 ──────────────────────────────────────────────
+
 def get_next_theme():
     """themes.csvから未投稿・優先度1のテーマを1件取得"""
-    rows = []
-    with open(THEMES_CSV, "r", encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if row["published"].upper() == "FALSE":
-                rows.append(row)
-
-    # priority=1 → 2 → 3 の順でカテゴリをバランスよく選ぶ
+    content, _ = gh_get_file(ZENN_REPO, "themes.csv")
+    if not content:
+        return None
+    reader = csv.DictReader(io.StringIO(content))
+    rows = [row for row in reader if row["published"].upper() == "FALSE"]
     for priority in ["1", "2", "3"]:
         candidates = [r for r in rows if r["priority"] == priority]
         if candidates:
@@ -122,22 +132,26 @@ def get_next_theme():
     return None
 
 
+# ── スラッグ生成 ────────────────────────────────────────────
+
 def title_to_slug(title):
-    """タイトルからZennスラッグを生成"""
-    # 日本語を除去してアルファベット・数字・ハイフンのみに
     slug = re.sub(r"[^\w\s-]", "", title.lower())
     slug = re.sub(r"[\s_]+", "-", slug)
     slug = re.sub(r"-+", "-", slug).strip("-")
-    # 短すぎる場合はUUIDを付与
     if len(slug) < 5:
         slug = "article-" + str(uuid.uuid4())[:8]
     return slug[:50]
 
 
-def generate_article(theme):
-    """Claude APIで記事を生成"""
-    client = anthropic.Anthropic()
+def slug_exists_on_github(slug):
+    _, sha = gh_get_file(ZENN_REPO, f"articles/{slug}.md")
+    return sha is not None
 
+
+# ── Claude API ──────────────────────────────────────────────
+
+def generate_article(theme):
+    client = anthropic.Anthropic()
     prompt = f"""
 以下のテーマでZenn記事を書いてください。
 
@@ -148,7 +162,6 @@ def generate_article(theme):
 
 Markdownフォーマットで、フロントマターから本文末尾のCTAまで完全な記事を出力してください。
 """
-
     message = client.messages.create(
         model="claude-opus-4-6",
         max_tokens=4096,
@@ -159,11 +172,8 @@ Markdownフォーマットで、フロントマターから本文末尾のCTAま
 
 
 def generate_threads_post(title, slug, article_preview):
-    """Claude APIでThreads投稿文を生成"""
     client = anthropic.Anthropic()
-
     zenn_url = f"https://zenn.dev/{ZENN_USER}/articles/{slug}"
-
     prompt = f"""
 以下の記事に対するThreads投稿文を作成してください。
 
@@ -171,7 +181,6 @@ def generate_threads_post(title, slug, article_preview):
 記事冒頭: {article_preview[:300]}
 ZennURL: {zenn_url}
 """
-
     message = client.messages.create(
         model="claude-opus-4-6",
         max_tokens=512,
@@ -182,10 +191,11 @@ ZennURL: {zenn_url}
 
 
 def extract_title_from_md(content):
-    """フロントマターからtitleを抽出"""
     match = re.search(r'^title:\s*["\']?(.+?)["\']?\s*$', content, re.MULTILINE)
     return match.group(1) if match else "無題"
 
+
+# ── メイン ──────────────────────────────────────────────────
 
 def main():
     theme = get_next_theme()
@@ -200,18 +210,18 @@ def main():
 
     title = extract_title_from_md(article_content)
     slug = title_to_slug(theme["title"])
-    filename = f"{slug}.md"
-    article_path = ARTICLES_DIR / filename
 
     # スラッグ重複チェック
-    if article_path.exists():
+    if slug_exists_on_github(slug):
         slug = slug + "-" + str(uuid.uuid4())[:4]
-        filename = f"{slug}.md"
-        article_path = ARTICLES_DIR / filename
 
-    # 記事を保存
-    with open(article_path, "w", encoding="utf-8") as f:
-        f.write(article_content)
+    filename = f"{slug}.md"
+
+    # GitHub APIで記事を保存
+    result = gh_put_file(ZENN_REPO, f"articles/{filename}", article_content, None, f"draft: {filename}")
+    if "content" not in result:
+        print(f"記事の保存に失敗しました: {result}")
+        return
     print(f"記事を保存: {filename}")
 
     # 記事プレビュー（フロントマター除いた先頭500字）
