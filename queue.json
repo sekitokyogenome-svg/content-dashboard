@@ -20,5 +20,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版",
     "created_at": "2026-03-28T16:16:04.645805",
     "status": "pending"
+  },
+  {
+    "id": "4bfa1cfd",
+    "theme_id": "A-01",
+    "title": "GA4のBigQueryエクスポート完全設定ガイド【2025年版】",
+    "filename": "ga4のbigqueryエクスポート完全設定ガイド2026年版-5456.md",
+    "article_preview": "```markdown\n---\ntitle: \"GA4のBigQueryエクスポート完全設定ガイド【2025年版】\"\nemoji: \"🔗\"\ntype: \"tech\"\ntopics: [\"GA4\", \"BigQuery\", \"GoogleCloud\", \"analytics\", \"EC\"]\npublished: false\n---\n\n## 「GA4の管理画面だけでは限界がある」と感じていませんか？\n\nGA4の探索レポートでデータを分析していて、こんな壁にぶつかったことはないでしょうか。\n\n- 探索レポートで14ヶ月以上前のデータが参照できない\n- セグメント比較をしようとすると（other）にまとめられてしまう\n- ユーザー単位の購買行動を細かく追えない\n\nこれらはすべて、GA4のデータをBigQueryにエクスポートすることで解決できます。この記事では、設定手順から初期確認のSQLまで、つまずきやすいポイントを押さえながら解説します。\n\n## 前提：必要なもの\n\n| 項目 | 内容 |\n|------|------|\n| GA4プロパティ | 編集者以上の権限 |\n| Google C",
+    "threads_post": "🔗 GA4の探索レポート、14ヶ月でデータ消えて困ってない？\n\n「セグメント比較したら（other）だらけ」「過去データもう見れない」——GA4あるあるですよね。\n\nこの記事では、GA4 × BigQueryエクスポートの設定手順を2025年最新版で完全解説しました。\n\nBigQueryに繋げば：\n✅ データ保持期間の制限なし\n✅ SQLで自由に深掘り分析\n✅ （other）問題から解放\n\n設定自体は意外とシンプルなので、「いつかやろう」と思ってた方は今がチャンスです。\n\n#GA4 #BigQuery #GoogleCloud #データ分析 #EC分析\n\nhttps://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-5456",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-5456",
+    "created_at": "2026-03-28T21:56:36.881234",
+    "status": "pending"
   }
 ]
