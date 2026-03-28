@@ -1,0 +1,13 @@
+[
+  {
+    "id": "cdef3607",
+    "theme_id": "B-02",
+    "title": "Claude CodeでBigQueryのSQLを自然言語から自動生成する",
+    "filename": "claude-code-bigquery-sql-generation.md",
+    "article_preview": "# はじめに\n\n「SQLが書けないけどデータを分析したい」\n\nそんな悩みを解決するのがClaude Code × BigQueryの組み合わせです...",
+    "threads_post": "【新記事】Claude CodeでBigQueryのSQLを自然言語から自動生成する方法を解説しました🤖\n\nGA4のデータ分析がSQL不要になります。\n\nhttps://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-generation\n\n#GA4 #BigQuery #ClaudeCode",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/claude-code-bigquery-sql-generation",
+    "created_at": "2026-03-29T00:05:31.467995",
+    "status": "pending"
+  }
+]

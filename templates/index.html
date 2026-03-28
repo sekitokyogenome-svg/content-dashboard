@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コンテンツ承認ダッシュボード</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .navbar-brand { font-weight: 700; font-size: 1.1rem; }
+    .card { border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-radius: 12px; }
+    .card-header { border-radius: 12px 12px 0 0 !important; font-weight: 600; }
+    .threads-preview {
+      background: #f0f2f5;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.92rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .article-preview {
+      background: #fff;
+      border: 1px solid #e9ecef;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 0.88rem;
+      max-height: 220px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .char-count { font-size: 0.8rem; }
+    .char-count.over { color: #dc3545; font-weight: 600; }
+    .btn-approve {
+      background: #0d6efd;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      padding: 10px 24px;
+    }
+    .btn-approve:hover { background: #0b5ed7; color: #fff; }
+    .btn-reject {
+      background: #fff;
+      color: #dc3545;
+      border: 1px solid #dc3545;
+      border-radius: 8px;
+      font-weight: 600;
+      padding: 10px 24px;
+    }
+    .btn-reject:hover { background: #dc3545; color: #fff; }
+    .status-published { color: #198754; font-weight: 600; }
+    .status-rejected { color: #6c757d; font-weight: 600; }
+    .empty-state { text-align: center; padding: 48px 16px; color: #adb5bd; }
+    .empty-state i { font-size: 3rem; display: block; margin-bottom: 12px; }
+    textarea.threads-edit {
+      border-radius: 8px;
+      font-size: 0.92rem;
+      resize: vertical;
+    }
+    .toast-container { position: fixed; bottom: 1rem; right: 1rem; z-index: 9999; }
+    .theme-row-published { background: #f0fff4; }
+    .theme-row-pending { background: #fff; }
+    .priority-badge-1 { background: #dc3545; }
+    .priority-badge-2 { background: #fd7e14; }
+    .priority-badge-3 { background: #6c757d; }
+    .progress-bar-custom { height: 6px; border-radius: 4px; }
+    .nav-tabs .nav-link { font-weight: 500; }
+    @media (max-width: 576px) {
+      .btn-approve, .btn-reject { width: 100%; margin-bottom: 8px; }
+      .theme-title-col { max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark bg-dark px-3 py-2">
+  <span class="navbar-brand"><i class="bi bi-layout-text-sidebar-reverse me-2"></i>コンテンツ管理</span>
+  <span class="badge bg-warning text-dark">{{ pending|length }}件 待機中</span>
+</nav>
+
+<div class="container-fluid py-3 px-3" style="max-width: 960px; margin: 0 auto;">
+
+  <!-- 進捗サマリー -->
+  <div class="card mb-3 p-3">
+    <div class="d-flex justify-content-between align-items-center mb-1">
+      <small class="text-muted fw-semibold">テーマ進捗</small>
+      <small class="text-muted">{{ published_count }} / {{ themes|length }} 公開済み</small>
+    </div>
+    <div class="progress progress-bar-custom">
+      <div class="progress-bar bg-success" style="width: {{ (published_count / themes|length * 100)|round|int if themes|length > 0 else 0 }}%"></div>
+    </div>
+  </div>
+
+  <!-- タブ -->
+  <ul class="nav nav-tabs mb-3" id="mainTab">
+    <li class="nav-item">
+      <a class="nav-link active" data-bs-toggle="tab" href="#tab-queue">
+        <i class="bi bi-clock me-1"></i>承認キュー
+        {% if pending %}<span class="badge bg-danger ms-1">{{ pending|length }}</span>{% endif %}
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-bs-toggle="tab" href="#tab-themes">
+        <i class="bi bi-list-ul me-1"></i>テーマ一覧
+      </a>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+
+    <!-- ── 承認キュータブ ── -->
+    <div class="tab-pane fade show active" id="tab-queue">
+
+      <h6 class="text-muted mb-3"><i class="bi bi-clock me-1"></i>承認待ち（{{ pending|length }}件）</h6>
+
+      {% if pending %}
+        {% for item in pending %}
+        <div class="card mb-4" id="card-{{ item.id }}">
+          <div class="card-header d-flex justify-content-between align-items-center bg-white">
+            <div>
+              <span class="badge bg-primary me-2">{{ item.theme_id }}</span>
+              <span class="fw-semibold">{{ item.title }}</span>
+            </div>
+            <small class="text-muted d-none d-sm-block">{{ item.created_at[:10] }}</small>
+          </div>
+          <div class="card-body">
+
+            <p class="mb-1 fw-semibold text-secondary" style="font-size:0.85rem;"><i class="bi bi-file-earmark-text me-1"></i>記事プレビュー</p>
+            <div class="article-preview mb-3">{{ item.article_preview }}</div>
+            <a href="{{ item.zenn_url }}" target="_blank" class="btn btn-sm btn-outline-secondary mb-3">
+              <i class="bi bi-box-arrow-up-right me-1"></i>Zennで確認
+            </a>
+
+            <p class="mb-1 fw-semibold text-secondary" style="font-size:0.85rem;"><i class="bi bi-chat-dots me-1"></i>Threads投稿文（@delta11235813）</p>
+            <textarea
+              class="form-control threads-edit mb-1"
+              rows="5"
+              id="threads-{{ item.id }}"
+              maxlength="500"
+              oninput="updateCount('{{ item.id }}')"
+            >{{ item.threads_post }}</textarea>
+            <div class="d-flex justify-content-between mb-3">
+              <small class="text-muted">最大500文字</small>
+              <small class="char-count" id="count-{{ item.id }}">{{ item.threads_post|length }} / 500</small>
+            </div>
+
+            <div class="d-flex flex-wrap gap-2">
+              <button class="btn btn-approve" onclick="approve('{{ item.id }}', '{{ item.title }}')">
+                <i class="bi bi-check-circle me-1"></i>承認して公開
+              </button>
+              <button class="btn btn-reject" onclick="reject('{{ item.id }}')">
+                <i class="bi bi-x-circle me-1"></i>却下
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="card mb-4">
+          <div class="empty-state">
+            <i class="bi bi-inbox"></i>
+            承認待ちの記事はありません
+          </div>
+        </div>
+      {% endif %}
+
+      {% if done %}
+      <h6 class="text-muted mb-3 mt-2"><i class="bi bi-check2-all me-1"></i>処理済み（{{ done|length }}件）</h6>
+      {% for item in done %}
+      <div class="card mb-2 opacity-75">
+        <div class="card-body py-2 px-3 d-flex justify-content-between align-items-center">
+          <div>
+            <span class="badge bg-secondary me-2">{{ item.theme_id }}</span>
+            <span style="font-size:0.92rem;">{{ item.title }}</span>
+          </div>
+          <span class="{% if item.status == 'published' %}status-published{% else %}status-rejected{% endif %}">
+            {% if item.status == 'published' %}<i class="bi bi-check-circle"></i> 公開済み
+            {% else %}<i class="bi bi-x-circle"></i> 却下{% endif %}
+          </span>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+
+    </div>
+
+    <!-- ── テーマ一覧タブ ── -->
+    <div class="tab-pane fade" id="tab-themes">
+
+      <!-- フィルター -->
+      <div class="d-flex gap-2 mb-3 flex-wrap">
+        <button class="btn btn-sm btn-primary" onclick="filterThemes('all')">すべて</button>
+        <button class="btn btn-sm btn-outline-success" onclick="filterThemes('published')">公開済み</button>
+        <button class="btn btn-sm btn-outline-secondary" onclick="filterThemes('pending')">未公開</button>
+        <select class="form-select form-select-sm w-auto" id="categoryFilter" onchange="filterThemes()">
+          <option value="">カテゴリ：全て</option>
+          <option value="A">A：GA4基礎</option>
+          <option value="B">B：Claude Code</option>
+          <option value="C">C：BigQuery活用</option>
+          <option value="D">D：Looker Studio</option>
+          <option value="E">E：EC戦略</option>
+          <option value="F">F：事例・まとめ</option>
+        </select>
+      </div>
+
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table table-hover mb-0" id="themesTable">
+            <thead class="table-light">
+              <tr>
+                <th style="width:60px;">ID</th>
+                <th>タイトル</th>
+                <th style="width:60px;" class="d-none d-sm-table-cell">優先</th>
+                <th style="width:80px;" class="d-none d-md-table-cell">種別</th>
+                <th style="width:90px;">状態</th>
+                <th style="width:90px;" class="d-none d-sm-table-cell">公開日</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for t in themes %}
+              {% set is_published = t.published|upper == 'TRUE' %}
+              <tr class="theme-row {{ 'theme-row-published' if is_published else 'theme-row-pending' }}"
+                  data-status="{{ 'published' if is_published else 'pending' }}"
+                  data-category="{{ t.id[0] }}">
+                <td><span class="badge bg-secondary">{{ t.id }}</span></td>
+                <td class="theme-title-col">
+                  {% if is_published and t.filename %}
+                    <a href="https://zenn.dev/web_benriya/articles/{{ t.filename|replace('.md','') }}" target="_blank" class="text-decoration-none text-dark">
+                      {{ t.title }}
+                    </a>
+                  {% else %}
+                    {{ t.title }}
+                  {% endif %}
+                </td>
+                <td class="d-none d-sm-table-cell">
+                  <span class="badge priority-badge-{{ t.priority }} text-white">{{ t.priority }}</span>
+                </td>
+                <td class="d-none d-md-table-cell">
+                  <span class="badge {{ 'bg-info text-dark' if t.type == 'tech' else 'bg-light text-dark border' }}">{{ t.type }}</span>
+                </td>
+                <td>
+                  {% if is_published %}
+                    <span class="text-success fw-semibold" style="font-size:0.85rem;"><i class="bi bi-check-circle-fill"></i> 公開</span>
+                  {% else %}
+                    <span class="text-muted" style="font-size:0.85rem;"><i class="bi bi-circle"></i> 未公開</span>
+                  {% endif %}
+                </td>
+                <td class="d-none d-sm-table-cell text-muted" style="font-size:0.85rem;">{{ t.published_date or '—' }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Toast通知 -->
+<div class="toast-container">
+  <div id="toast" class="toast align-items-center border-0" role="alert">
+    <div class="d-flex">
+      <div class="toast-body" id="toast-msg"></div>
+      <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function updateCount(id) {
+  const ta = document.getElementById('threads-' + id);
+  const counter = document.getElementById('count-' + id);
+  const len = ta.value.length;
+  counter.textContent = len + ' / 500';
+  counter.classList.toggle('over', len > 500);
+}
+
+function showToast(msg, success) {
+  const toast = document.getElementById('toast');
+  toast.className = 'toast align-items-center border-0 ' + (success ? 'bg-success text-white' : 'bg-danger text-white');
+  document.getElementById('toast-msg').textContent = msg;
+  new bootstrap.Toast(toast, { delay: 3000 }).show();
+}
+
+async function approve(id, title) {
+  const ta = document.getElementById('threads-' + id);
+  await fetch('/api/update_threads/' + id, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ threads_post: ta.value })
+  });
+
+  if (!confirm(`「${title}」を公開しますか？\n\nZennに公開し、Threadsにも投稿します。`)) return;
+
+  const btn = event.target;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>公開中...';
+
+  const res = await fetch('/api/approve/' + id, { method: 'POST' });
+  const data = await res.json();
+
+  if (data.success) {
+    showToast('✅ 公開完了！Zenn & Threadsに投稿しました', true);
+    setTimeout(() => location.reload(), 2000);
+  } else {
+    showToast('❌ エラー: ' + (data.error || '不明なエラー'), false);
+    btn.disabled = false;
+    btn.innerHTML = '<i class="bi bi-check-circle me-1"></i>承認して公開';
+  }
+}
+
+async function reject(id) {
+  if (!confirm('この記事を却下しますか？')) return;
+  const res = await fetch('/api/reject/' + id, { method: 'POST' });
+  const data = await res.json();
+  if (data.success) {
+    showToast('却下しました', true);
+    setTimeout(() => location.reload(), 1500);
+  }
+}
+
+let currentStatus = 'all';
+function filterThemes(status) {
+  if (status !== undefined) currentStatus = status;
+  const category = document.getElementById('categoryFilter').value;
+  document.querySelectorAll('#themesTable tbody tr').forEach(row => {
+    const matchStatus = currentStatus === 'all' || row.dataset.status === currentStatus;
+    const matchCategory = !category || row.dataset.category === category;
+    row.style.display = (matchStatus && matchCategory) ? '' : 'none';
+  });
+}
+
+document.querySelectorAll('textarea[id^="threads-"]').forEach(ta => {
+  const id = ta.id.replace('threads-', '');
+  updateCount(id);
+});
+</script>
+</body>
+</html>
