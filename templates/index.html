@@ -150,6 +150,9 @@
               <button class="btn btn-approve" onclick="approve('{{ item.id }}', '{{ item.title }}')">
                 <i class="bi bi-check-circle me-1"></i>承認して公開
               </button>
+              <button class="btn btn-outline-primary" onclick="proofread('{{ item.id }}')">
+                <i class="bi bi-stars me-1"></i>AI校正
+              </button>
               <button class="btn btn-reject" onclick="reject('{{ item.id }}')">
                 <i class="bi bi-x-circle me-1"></i>却下
               </button>
@@ -310,6 +313,30 @@ async function approve(id, title) {
     showToast('❌ エラー: ' + (data.error || '不明なエラー'), false);
     btn.disabled = false;
     btn.innerHTML = '<i class="bi bi-check-circle me-1"></i>承認して公開';
+  }
+}
+
+async function proofread(id) {
+  if (!confirm('AI校正を実行しますか？\n\n専門性と文脈の観点で記事を見直し、修正版に上書きします。\n（1〜2分かかります）')) return;
+
+  const btn = event.target;
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner-border spinner-border-sm me-1"></span>校正中...';
+
+  const res = await fetch('/api/proofread/' + id, { method: 'POST' });
+  const data = await res.json();
+
+  if (data.success) {
+    // プレビューを更新
+    const preview = document.querySelector(`#card-${id} .article-preview`);
+    if (preview) preview.textContent = data.article_preview;
+    showToast('✅ AI校正完了！記事を更新しました', true);
+    btn.disabled = false;
+    btn.innerHTML = '<i class="bi bi-stars me-1"></i>AI校正';
+  } else {
+    showToast('❌ エラー: ' + (data.error || '不明なエラー'), false);
+    btn.disabled = false;
+    btn.innerHTML = '<i class="bi bi-stars me-1"></i>AI校正';
   }
 }
 

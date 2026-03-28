@@ -3,10 +3,12 @@ import csv
 import io
 import json
 import os
+import re
 import uuid
 from datetime import datetime
 from pathlib import Path
 
+import anthropic
 import requests as req
 from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request
@@ -121,6 +123,32 @@ def publish_to_zenn(filename, title):
     return {"error": str(result)}
 
 
+PROOFREAD_PROMPT = """
+あなたはGA4・BigQuery・Claude Codeを専門とするWEBコンサルタントです。
+以下のZenn記事を2つの観点で見直し、問題があれば修正した完全な記事を出力してください。
+
+## 確認観点
+
+**① 専門家としての正確性**
+- GA4 BigQueryのフィールド名が正しいか（ga_session_id、collected_traffic_source.manual_medium 等）
+- SQLクエリの構文・ロジックに誤りがないか
+- Claude Code / MCP の説明が現時点で正確か
+- 数字・事例が非現実的でないか
+
+**② 文脈・流れの自然さ**
+- 冒頭のペルソナの悩みと本文の内容が一致しているか
+- 見出しの順序が論理的か
+- 突然話題が変わる箇所がないか
+- CTAへの導線が自然か
+
+## 出力ルール
+- フロントマターから末尾CTAまで、完全な記事をそのまま出力する
+- published は false のままにする
+- 修正箇所がない場合もそのまま全文出力する
+- 説明や前置きは不要。記事本文のみ出力する
+"""
+
+
 # ── ルーティング ─────────────────────────────────────────────
 
 @app.route("/")
@@ -176,6 +204,41 @@ def reject(item_id):
     item["status"] = "rejected"
     save_queue(queue, sha)
     return jsonify({"success": True})
+
+
+@app.route("/api/proofread/<item_id>", methods=["POST"])
+def proofread(item_id):
+    queue, sha = load_queue()
+    item = next((i for i in queue if i["id"] == item_id), None)
+    if not item:
+        return jsonify({"error": "Item not found"}), 404
+
+    # GitHubから記事を取得
+    path = f"articles/{item['filename']}"
+    content, file_sha = gh_get_file(ZENN_REPO, path)
+    if not content:
+        return jsonify({"error": f"記事ファイルが見つかりません: {path}"}), 404
+
+    # Claude APIで校正
+    client = anthropic.Anthropic()
+    message = client.messages.create(
+        model="claude-opus-4-6",
+        max_tokens=4096,
+        messages=[{"role": "user", "content": f"{PROOFREAD_PROMPT}\n\n---\n\n{content}"}],
+    )
+    corrected = message.content[0].text
+
+    # 校正後の記事をGitHubに保存
+    result = gh_put_file(ZENN_REPO, path, corrected, file_sha, f"proofread: {item['filename']}")
+    if "content" not in result:
+        return jsonify({"error": f"保存失敗: {result}"}), 500
+
+    # article_previewを更新
+    body = re.sub(r"^---[\s\S]+?---\n", "", corrected, count=1).strip()
+    item["article_preview"] = body[:500]
+    save_queue(queue, sha)
+
+    return jsonify({"success": True, "article_preview": item["article_preview"]})
 
 
 @app.route("/api/update_threads/<item_id>", methods=["POST"])
