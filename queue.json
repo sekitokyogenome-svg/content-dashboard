@@ -42,5 +42,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版",
     "created_at": "2026-03-29T22:03:30.424764",
     "status": "pending"
+  },
+  {
+    "id": "fa7a3b00",
+    "theme_id": "A-01",
+    "title": "GA4のBigQueryエクスポート完全設定ガイド【2025年版】",
+    "filename": "ga4のbigqueryエクスポート完全設定ガイド2026年版-2f87.md",
+    "article_preview": "```markdown\n---\ntitle: \"GA4のBigQueryエクスポート完全設定ガイド【2025年版】\"\nemoji: \"🔗\"\ntype: \"tech\"\ntopics: [\"GA4\", \"BigQuery\", \"GoogleCloud\", \"analytics\", \"EC\"]\npublished: false\n---\n\n「GA4の標準レポートだけでは、欲しいデータが出せない…」\n「BigQueryに連携すればいいらしいけど、設定手順がわからない…」\n\n中小ECの経営者やマーケターから、こうした相談を本当によくいただきます。GA4のBigQueryエクスポートは**無料枠の範囲でも十分活用でき**、生データを自由にSQL分析できる強力な武器になります。\n\nこの記事では、2025年最新のUI・仕様に基づいて、GA4→BigQueryのエクスポート設定を画面付きでステップ解説します。\n\n## なぜBigQueryエクスポートが必要なのか\n\nGA4の探索レポートには以下の制限があります。\n\n| 制限項目 | GA4探索レポート | BigQuery |\n|---|---|---|\n",
+    "threads_post": "🔗 GA4の標準レポートだけじゃ物足りない…そんな悩み、ありませんか？\n\n実はGA4のデータ、BigQueryに連携すれば**無料枠の範囲内でも**驚くほど深い分析ができるんです。\n\nでも「設定手順がわからない」「Google Cloudの画面が怖い」という声が本当に多い…\n\nそこで、2025年最新の画面キャプチャ付きで、GA4→BigQueryエクスポートの設定手順を完全ガイドとしてまとめました。\n\n中小ECの経営者・マーケターの方でも迷わず設定できるよう、つまずきやすいポイントも丁寧に解説しています💡\n\n「標準レポートの限界」を感じている方、ぜひ👇\n\n#GA4 #BigQuery #データ分析 #EC運営\n\nhttps://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-2f87",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-2f87",
+    "created_at": "2026-03-30T23:02:38.337295",
+    "status": "pending"
   }
 ]
