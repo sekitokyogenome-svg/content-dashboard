@@ -53,5 +53,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-2f87",
     "created_at": "2026-03-30T23:02:38.337295",
     "status": "pending"
+  },
+  {
+    "id": "0dfe56ac",
+    "theme_id": "A-01",
+    "title": "GA4のBigQueryエクスポート完全設定ガイド【2026年版】",
+    "filename": "ga4のbigqueryエクスポート完全設定ガイド2026年版.md",
+    "article_preview": "```markdown\n---\ntitle: \"GA4のBigQueryエクスポート完全設定ガイド【2026年版】\"\nemoji: \"🔗\"\ntype: \"tech\"\ntopics: [\"GA4\", \"BigQuery\", \"GoogleCloud\", \"analytics\", \"EC\"]\npublished: false\n---\n\n「GA4の管理画面だけでは、本当に欲しいデータに辿り着けない…」\n\nEC運営をしていると、こんな壁にぶつかりませんか？\n\n- 購入までの行動を**セッション単位で細かく追いたい**のにGA4のレポートでは限界がある\n- 14ヶ月を超えた過去データが探索レポートで使えなくなった\n- チャネル別・商品別のLTVを自由にSQLで分析したい\n\nこれらの課題を一気に解決するのが **GA4 → BigQueryエクスポート** です。本記事では2026年最新のUI・仕様に対応した設定手順を、つまずきやすいポイントとともに解説します。\n\n## 前提条件を確認しよう\n\n設定を始める前に、以下を満たしているか確認してください。\n\n| 項目 | 必要な条件 |\n|------",
+    "threads_post": "🔗 GA4の管理画面、「これ以上深掘りできない…」って限界感じてませんか？\n\nEC運営してると特に、購入までの行動をセッション単位で追いたいのにGA4のレポートじゃ足りない、14ヶ月超えたデータが探索で使えない…ってなりがちですよね。\n\nその壁を突破する方法が**BigQueryエクスポート**です。\n\nこの記事では、GA4→BigQueryの連携設定を2026年最新の手順でゼロから完全解説しました。GCPプロジェクトの作り方からエクスポート設定、データが届いてるか確認するところまで、迷わず進められるようにまとめてます。\n\n「SQLとかBigQueryとか難しそう…」って方も大丈夫。設定自体は画面ポチポチでいけます。まずはデータを貯め始めることが最重要です。\n\nGA4を\"見るだけのツール\"から\"分析基盤\"に変えたい方はぜひ👇\n\n#GA4 #BigQuery #データ分析 #EC運営 #GoogleCloud\n\nhttps://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版",
+    "created_at": "2026-03-31T22:55:14.457289",
+    "status": "pending"
   }
 ]
