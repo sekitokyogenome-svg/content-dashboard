@@ -64,5 +64,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版",
     "created_at": "2026-03-31T22:55:14.457289",
     "status": "pending"
+  },
+  {
+    "id": "063e1cd0",
+    "theme_id": "A-01",
+    "title": "GA4のBigQueryエクスポート完全設定ガイド【2026年版】",
+    "filename": "ga4のbigqueryエクスポート完全設定ガイド2026年版-37c5.md",
+    "article_preview": "```markdown\n---\ntitle: \"GA4のBigQueryエクスポート完全設定ガイド【2026年版】\"\nemoji: \"🔗\"\ntype: \"tech\"\ntopics: [\"GA4\", \"BigQuery\", \"GoogleCloud\", \"analytics\", \"EC\"]\npublished: false\n---\n\n## 「GA4の標準レポートだけでは、もう限界…」\n\nECサイトを運営していると、こんな壁にぶつかりませんか？\n\n- 「探索レポートで14ヶ月以上前のデータが消えていた…」\n- 「セッション単位のユーザー行動を細かく分析したいのに、GA4の画面だとできることが限られる」\n- 「広告のROASをセッション×商品カテゴリで正確に出したい」\n\nGA4の管理画面は便利ですが、**生データに直接アクセスできないと解決できない課題**は多いです。その解決策がBigQueryエクスポートです。\n\nこの記事では、2026年時点の最新UIに基づいて、GA4→BigQueryのエクスポート設定を**ゼロから完了まで**解説します。\n\n---\n\n## 前提条件の確認\n\n設定を始め",
+    "threads_post": "🔗 GA4の標準レポートだけで分析してる人、そろそろ限界感じてませんか？\n\n「探索レポートで14ヶ月前のデータが消えてた…」\n「セッション単位でユーザー行動を深掘りしたいのにGA4画面じゃ無理…」\n\nその悩み、BigQueryエクスポートで全部解決できます。\n\n今回の記事では、GA4→BigQueryの連携設定を2026年最新版として完全ガイドにまとめました。設定手順はもちろん、EC運営者が実際にハマりやすいポイントも網羅しています。\n\n✅ データ保持期限の制約から解放される\n✅ SQLで自由自在にユーザー行動を深掘りできる\n✅ 設定手順をスクショ付きで迷わず進められる\n\n「いつかやろう」と思ってたBigQuery連携、この記事で今日終わらせちゃいましょう💪\n\n#GA4 #BigQuery #データ分析 #EC運営 #GoogleCloud\n\nhttps://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-37c5",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-37c5",
+    "created_at": "2026-04-01T23:05:33.299252",
+    "status": "pending"
   }
 ]
