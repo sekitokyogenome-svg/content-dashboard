@@ -75,5 +75,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-37c5",
     "created_at": "2026-04-01T23:05:33.299252",
     "status": "pending"
+  },
+  {
+    "id": "9889c490",
+    "theme_id": "A-01",
+    "title": "GA4のBigQueryエクスポート完全設定ガイド【2026年版】",
+    "filename": "ga4のbigqueryエクスポート完全設定ガイド2026年版-c0fd.md",
+    "article_preview": "```markdown\n---\ntitle: \"GA4のBigQueryエクスポート完全設定ガイド【2026年版】\"\nemoji: \"🔗\"\ntype: \"tech\"\ntopics: [\"GA4\", \"BigQuery\", \"GoogleCloud\", \"analytics\", \"EC\"]\npublished: false\n---\n\n「GA4の標準レポートだけだと、細かい分析ができない…」\n「BigQueryにエクスポートしたいけど、設定が難しそうで手が出ない…」\n\n中小ECを運営していると、GA4の探索レポートではサンプリングがかかったり、データ保持期間の制限（最大14ヶ月）に悩まされたりしますよね。BigQueryにエクスポートすれば、**生データを無期限で保持**でき、SQLで自由自在に分析できます。\n\nこの記事では、2026年最新のGA4 → BigQueryエクスポート設定を、スクリーンショットの代わりにステップごとの手順で丁寧に解説します。\n\n## BigQueryエクスポートで何が変わるのか\n\n| 項目 | GA4標準 | BigQuery連携後 |\n|---|---|--",
+    "threads_post": "🔗 GA4の標準レポートだけで分析してる人、データ保持期間14ヶ月の壁にぶつかってませんか？\n\nBigQueryにエクスポートすれば、サンプリングなしの生データを無期限で保持＆自由に分析できます。\n\n「設定が難しそう…」と感じて後回しにしてる方向けに、2026年最新の手順を一から丁寧にまとめました。中小EC運営者でもつまずかないよう、GCPプロジェクト作成からGA4連携まで完全網羅してます。\n\n一度設定すれば、あとは毎日自動でデータが溜まっていく仕組み。早く始めるほどデータ資産が積み上がるので、この記事を見たタイミングがベストです💡\n\n#GA4 #BigQuery #データ分析 #EC運用\n\nhttps://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-c0fd",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-c0fd",
+    "created_at": "2026-04-02T22:54:21.685294",
+    "status": "pending"
   }
 ]
