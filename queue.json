@@ -86,5 +86,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-c0fd",
     "created_at": "2026-04-02T22:54:21.685294",
     "status": "pending"
+  },
+  {
+    "id": "3558fafe",
+    "theme_id": "A-01",
+    "title": "GA4のBigQueryエクスポート完全設定ガイド【2026年版】",
+    "filename": "ga4のbigqueryエクスポート完全設定ガイド2026年版-feaa.md",
+    "article_preview": "```markdown\n---\ntitle: \"GA4のBigQueryエクスポート完全設定ガイド【2026年版】\"\nemoji: \"🔗\"\ntype: \"tech\"\ntopics: [\"GA4\", \"BigQuery\", \"GoogleCloud\", \"analytics\", \"EC\"]\npublished: false\n---\n\n## 「GA4の標準レポートだけでは限界…」と感じていませんか？\n\n「GA4の探索レポートでセグメントを切ると、しょっちゅうサンプリングがかかって正確な数字が出ない」\n「過去14ヶ月より前のデータを分析したいのに、もう消えていた」\n「商品別×流入元別のLTVを出したいけど、GA4の画面では無理だった」\n\n中小ECを運営していると、こうした壁にぶつかる瞬間がありますよね。これらの問題をすべて解決するのが **GA4 → BigQueryエクスポート** です。\n\n本記事では、2026年最新のUI・仕様に基づいて、設定手順をゼロから解説します。\n\n## BigQueryエクスポートで何が変わるのか\n\n| 項目 | GA4標準レポート | BigQuery連携後 ",
+    "threads_post": "🔗 GA4の探索レポート、サンプリングかかって正確な数字出ない問題...あれ地味にストレスですよね。\n\nしかも過去14ヶ月超えたデータは消えるし、商品別×流入元別のLTVとか出そうとすると標準レポートじゃ完全に限界。\n\nそこで**BigQueryエクスポート**の出番なんですが、設定でつまずく人がめちゃくちゃ多い。\n\n今回の記事では、GA4→BigQueryの連携を**2026年最新の手順**で完全解説しました。\n\n✅ GCPプロジェクト作成からリンク設定まで一気通貫\n✅ サンプリングなしで生データを自由にSQL分析\n✅ 14ヶ月の壁を突破して長期データを蓄積\n✅ EC向けのLTV分析など実践的な活用イメージも紹介\n\n「いつかやらなきゃ」と思ってた方、この記事通りにやれば今日中に設定完了できます。\n\n#GA4 #BigQuery #データ分析 #GoogleCloud #EC分析\n\nhttps://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-feaa",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-feaa",
+    "created_at": "2026-04-03T22:03:47.916213",
+    "status": "pending"
   }
 ]
