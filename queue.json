@@ -97,5 +97,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-feaa",
     "created_at": "2026-04-03T22:03:47.916213",
     "status": "pending"
+  },
+  {
+    "id": "9244372b",
+    "theme_id": "A-01",
+    "title": "GA4のBigQueryエクスポート完全設定ガイド【2026年版】",
+    "filename": "ga4のbigqueryエクスポート完全設定ガイド2026年版-be15.md",
+    "article_preview": "```markdown\n---\ntitle: \"GA4のBigQueryエクスポート完全設定ガイド【2026年版】\"\nemoji: \"🔗\"\ntype: \"tech\"\ntopics: [\"GA4\", \"BigQuery\", \"GoogleCloud\", \"analytics\", \"EC\"]\npublished: false\n---\n\n## 「GA4の管理画面だけでは限界がある…」と感じていませんか？\n\n「GA4の探索レポートで90日以上前のデータが消えていた」「セグメントを細かく掛けると(other)にまとめられてしまう」——EC運営をしていると、こうした壁にぶつかる瞬間があります。\n\nその解決策が **GA4 → BigQueryエクスポート** です。生データをBigQueryに蓄積すれば、データ保持期間の制限もサンプリングも関係なくなります。\n\n本記事では、2026年最新のUI・仕様に対応した設定手順を、スクリーンショットの代わりにステップごとの操作パスで丁寧に解説します。\n\n---\n\n## 前提条件の確認\n\n設定を始める前に、以下の3点を確認してください。\n\n| 項目 | 必要な",
+    "threads_post": "🔗 GA4の探索レポート、90日でデータ消えてた経験ありませんか？\n\nGA4の管理画面だけだと「データ保持期間の壁」「セグメント掛けすぎて(other)になる問題」が避けられません。\n\nこの記事では、GA4のデータをBigQueryにエクスポートする設定手順を2026年最新版で完全解説しました。\n\n✅ 設定の全ステップを画面付きで紹介\n✅ EC運営者が実務でハマるポイントも網羅\n✅ 生データを自由に分析できる環境が手に入る\n\n「GA4だけじゃ足りない」と感じ始めた方、まずはBigQueryエクスポートの設定から始めてみてください👇\n\n#GA4 #BigQuery #データ分析 #EC運営\n\nhttps://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-be15",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-be15",
+    "created_at": "2026-04-04T21:58:44.990559",
+    "status": "pending"
   }
 ]
