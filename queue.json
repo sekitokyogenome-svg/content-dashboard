@@ -119,5 +119,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-134d",
     "created_at": "2026-04-05T22:00:02.494556",
     "status": "pending"
+  },
+  {
+    "id": "669290b5",
+    "theme_id": "A-01",
+    "title": "GA4のBigQueryエクスポート完全設定ガイド【2026年版】",
+    "filename": "ga4のbigqueryエクスポート完全設定ガイド2026年版-5a6b.md",
+    "article_preview": "---\ntitle: \"GA4のBigQueryエクスポート完全設定ガイド【2026年版】\"\nemoji: \"🔗\"\ntype: \"tech\"\ntopics: [\"GA4\", \"BigQuery\", \"GoogleCloud\", \"analytics\", \"EC\"]\npublished: false\n---\n\n## 「GA4の標準レポートだけでは限界がある…」と感じていませんか？\n\n「GA4で細かいユーザー行動を分析したいのに、探索レポートではサンプリングがかかって正確な数字が出ない」「チャネル別のLTVを出したいけど、どうにも集計しきれない」——中小ECを運営していると、こうした壁にぶつかる瞬間があるはずです。\n\nその突破口が **GA4 → BigQueryエクスポート** です。生データをBigQueryに流し込めば、SQLで自由に集計でき、サンプリングなしの正確な分析が可能になります。\n\n本記事では、2026年最新のUI・仕様に基づいて、エクスポート設定の全手順と注意点を解説します。\n\n## 前提条件の確認\n\n設定を始める前に、以下を満たしているか確認してください。\n\n:::me",
+    "threads_post": "🔗 GA4の探索レポート、サンプリングかかって正確な数字出なくない？\n\n中小ECでチャネル別LTVとか細かいユーザー行動を分析したいなら、BigQueryエクスポートが最適解です。\n\nこの記事では、GA4→BigQueryの連携設定を2026年最新の手順でゼロから解説しました。「設定が難しそう…」と後回しにしてた方も、これ見ながらやれば迷わず完了できるはず。\n\nサンプリングなしの生データで分析できるようになると、見える世界が変わりますよ。\n\n#GA4 #BigQuery #データ分析 #EC運営 #GoogleCloud\n\nhttps://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-5a6b",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4のbigqueryエクスポート完全設定ガイド2026年版-5a6b",
+    "created_at": "2026-04-06T22:06:33.021921",
+    "status": "pending"
   }
 ]
