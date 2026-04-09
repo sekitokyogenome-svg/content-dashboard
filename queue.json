@@ -152,5 +152,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4bigqueryで初回購入リピートまでのファネルを可視化する",
     "created_at": "2026-04-08T23:10:57.201119",
     "status": "pending"
+  },
+  {
+    "id": "1153c396",
+    "theme_id": "D-01",
+    "title": "Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順",
+    "filename": "looker-studio-bigqueryでec売上ダッシュボードを1日で作る完全手順.md",
+    "article_preview": "```markdown\n---\ntitle: \"Looker Studio × BigQueryでEC売上ダッシュボードを1日で作る完全手順\"\nemoji: \"📊\"\ntype: \"tech\"\ntopics: [\"LookerStudio\", \"BigQuery\", \"GA4\", \"EC\", \"ダッシュボード\"]\npublished: false\n---\n\n## 「毎朝スプレッドシートを手作業で更新するのが辛い…」\n\nEC運営をしていると、売上・CVR・チャネル別の数字を毎日チェックしたいですよね。でも現実は、GA4の画面を何度も行き来したり、スプレッドシートに手動でコピペしたり。週次レポートの作成に毎回2時間かかっている、という方も多いのではないでしょうか。\n\nこの記事では、**GA4 × BigQuery × Looker Studio** を組み合わせて、自動更新されるEC売上ダッシュボードを1日で構築する手順を解説します。\n\n## 全体の構成とゴール\n\n```\nGA4 → BigQuery（自動エクスポート） → ビュー/テーブル → Looker Studio\n```\n\n最終的",
+    "threads_post": "📊 EC運営で毎朝スプレッドシートに数字をコピペしてる人、そろそろ卒業しませんか？\n\nGA4の画面を行ったり来たり、手動で週次レポート作成…その時間、もったいないです。\n\n今回の記事では、Looker Studio × BigQueryを使って **EC売上ダッシュボードをたった1日で構築する手順** を完全解説しました。\n\n売上・CVR・チャネル別の数字が自動更新されるダッシュボードがあれば、毎朝の確認は\"開くだけ\"になります。\n\n✅ BigQueryとGA4の連携設定\n✅ SQLでのデータ整形\n✅ Looker Studioでの可視化テクニック\n\n全部まとめて1記事にしたので、手を動かしながら読めばその日のうちに完成します💪\n\n#GA4 #BigQuery #LookerStudio #EC #データ分析\n\nhttps://zenn.dev/web_benriya/articles/looker-studio-bigqueryでec売上ダッシュボードを1日で作る完全手順",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/looker-studio-bigqueryでec売上ダッシュボードを1日で作る完全手順",
+    "created_at": "2026-04-09T23:26:29.852675",
+    "status": "pending"
   }
 ]
