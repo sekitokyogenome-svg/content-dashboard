@@ -163,5 +163,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/looker-studio-bigqueryでec売上ダッシュボードを1日で作る完全手順",
     "created_at": "2026-04-09T23:26:29.852675",
     "status": "pending"
+  },
+  {
+    "id": "cb208f4a",
+    "theme_id": "D-04",
+    "title": "Looker Studioが重い・遅い問題をBigQuery化で解決した話【表示速度10倍改善】",
+    "filename": "looker-studioのデータポータルが重い遅い問題をbigquery化で解決した.md",
+    "article_preview": "```markdown\n---\ntitle: \"Looker Studioが重い・遅い問題をBigQuery化で解決した話【表示速度10倍改善】\"\nemoji: \"⚡\"\ntype: \"idea\"\ntopics: [\"LookerStudio\", \"BigQuery\", \"GA4\", \"データ分析\", \"EC\"]\npublished: false\n---\n\n## 「レポート開くのに毎回30秒以上かかるんですが…」\n\nEC運営をしている方なら、一度はこの苦痛を味わったことがあるのではないでしょうか。\n\nLooker Studio（旧データポータル）でGA4のレポートを作ったはいいものの、ページを開くたびにグルグルと読み込みが回り続ける。フィルタを切り替えるとまた30秒。日付範囲を変えるとさらに30秒。\n\nチームミーティングで画面共有しながら「ちょっと待ってくださいね…」と言い続ける気まずさ。あれ、本当につらいですよね。\n\nこの記事では、月商3,000万円規模のアパレルECサイトで実際にこの問題を解決した事例をお伝えします。\n\n## なぜLooker Studio × GA4ネイティブ接続は",
+    "threads_post": "⚡ Looker Studio、開くたびに30秒待つのもうやめませんか？\n\nGA4×Looker Studioのレポートが重すぎて毎回イライラ…EC運営あるあるですよね。\n\nこの記事では、BigQueryを中間に挟むことで表示速度を10倍改善した具体的な方法をまとめました。\n\n「レポート見るのが苦痛」→「サクッと3秒で開く」に変わるだけで、データを見る習慣もチームの意思決定スピードも一気に変わります。\n\n重いダッシュボードに耐えてる方、ぜひ試してみてください💡\n\n#LookerStudio #BigQuery #GA4 #データ分析 #EC運営\n\nhttps://zenn.dev/web_benriya/articles/looker-studioのデータポータルが重い遅い問題をbigquery化で解決した",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/looker-studioのデータポータルが重い遅い問題をbigquery化で解決した",
+    "created_at": "2026-04-10T23:01:04.068899",
+    "status": "pending"
   }
 ]
