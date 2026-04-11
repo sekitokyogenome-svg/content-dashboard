@@ -174,5 +174,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/looker-studioのデータポータルが重い遅い問題をbigquery化で解決した",
     "created_at": "2026-04-10T23:01:04.068899",
     "status": "pending"
+  },
+  {
+    "id": "927eb5fb",
+    "theme_id": "D-05",
+    "title": "Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想",
+    "filename": "looker-studio-bigqueryで経営者が毎朝見るダッシュボードの設計思想.md",
+    "article_preview": "```markdown\n---\ntitle: \"Looker Studio × BigQueryで経営者が毎朝見るダッシュボードの設計思想\"\nemoji: \"📊\"\ntype: \"idea\"\ntopics: [\"LookerStudio\", \"BigQuery\", \"GA4\", \"EC\", \"ダッシュボード\"]\npublished: false\n---\n\n## 「ダッシュボード、誰も見てないんですよね…」\n\nこの言葉、EC事業を支援する中で何度聞いたか分かりません。\n\n高機能なBIツールを導入し、エンジニアやマーケターが何十時間もかけてダッシュボードを構築。ところが肝心の経営者が「情報が多すぎて何を見ていいか分からない」と開かなくなり、結局Excelで週次報告を受けている——。\n\nこの問題の根本は「作る側」と「見る側」の設計思想のズレにあります。今回は、私が実際にEC企業の経営者向けに構築し、**毎朝の意思決定に使われ続けている**ダッシュボードの設計思想を共有します。\n\n## 失敗するダッシュボードの3つの特徴\n\nまず「見られなくなるダッシュボード」には共通点があります。\n\n| 特徴 ",
+    "threads_post": "📊 「ダッシュボード作ったのに、誰も見てない…」\n\nEC支援の現場で何度も聞いてきたこの悩み、原因は\"情報の多さ\"でした。\n\nこの記事では、Looker Studio × BigQueryで**経営者が毎朝自然と開きたくなる**ダッシュボードの設計思想をまとめました。\n\nポイントは「何を載せるか」じゃなく「何を載せないか」。\n\n・高機能BIを入れたのに活用されていない\n・経営層にデータを見てもらえない\n・どの指標を最初に見せるべきか迷う\n\nこんな悩みがある方にこそ読んでほしい内容です。技術スタックの話だけでなく、\"意思決定につながる情報設計\"の考え方を共有しています。\n\n#LookerStudio #BigQuery #GA4 #ダッシュボード #データ分析\n\nhttps://zenn.dev/web_benriya/articles/looker-studio-bigqueryで経営者が毎朝見るダッシュボードの設計思想",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/looker-studio-bigqueryで経営者が毎朝見るダッシュボードの設計思想",
+    "created_at": "2026-04-11T22:01:19.429600",
+    "status": "pending"
   }
 ]
