@@ -185,5 +185,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/looker-studio-bigqueryで経営者が毎朝見るダッシュボードの設計思想",
     "created_at": "2026-04-11T22:01:19.429600",
     "status": "pending"
+  },
+  {
+    "id": "e3bf5614",
+    "theme_id": "D-15",
+    "title": "GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順",
+    "filename": "ga4-bigquery-looker-studioで完全自動のec分析基盤を0から構築する全手順.md",
+    "article_preview": "```markdown\n---\ntitle: \"GA4 × BigQuery × Looker Studioで完全自動のEC分析基盤を0から構築する全手順\"\nemoji: \"📊\"\ntype: \"tech\"\ntopics: [\"ga4\", \"bigquery\", \"lookerstudio\", \"ec\", \"データ分析\"]\npublished: false\n---\n\n## 「毎週のレポート作成に半日かかっている」あなたへ\n\nEC運営をしていると、売上・CVR・流入チャネル別の成果など、見るべき指標が多すぎて、レポート作成だけで毎週何時間も消耗していませんか？\n\nGA4の管理画面だけでは限界がある。でもBigQueryやLooker Studioは「なんだか難しそう」で手が出ない——。\n\nこの記事では、GA4のデータをBigQueryに連携し、Looker Studioで自動更新されるECダッシュボードを**ゼロから構築する全手順**を解説します。一度作れば、毎朝コーヒーを飲みながら最新データを眺めるだけの運用になります。\n\n## 全体アーキテクチャ\n\n構築するのは以下の3層構成です。\n\n",
+    "threads_post": "📊 ECサイト運営してる人、毎週のレポート作成に何時間かけてますか？\n\nGA4の管理画面ポチポチ → スプレッドシートにコピペ → グラフ作成…これ、全部自動化できます。\n\nGA4 × BigQuery × Looker Studioを組み合わせて、売上・CVR・流入チャネル別の成果が自動更新されるダッシュボードを0から構築する全手順をまとめました。\n\n✅ GA4のBigQueryエクスポート設定から丁寧に解説\n✅ SQLが苦手でもコピペで動くクエリ付き\n✅ 一度作れば毎週の半日作業がゼロになる\n\n「レポート作成がしんどい」から解放されたい方はぜひ👇\n\n#GA4 #BigQuery #LookerStudio #EC運営 #データ分析\n\nhttps://zenn.dev/web_benriya/articles/ga4-bigquery-looker-studioで完全自動のec分析基盤を0から構築する全手順",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/ga4-bigquery-looker-studioで完全自動のec分析基盤を0から構築する全手順",
+    "created_at": "2026-04-12T22:04:07.764639",
+    "status": "pending"
   }
 ]
