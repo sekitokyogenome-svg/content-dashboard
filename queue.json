@@ -196,5 +196,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4-bigquery-looker-studioで完全自動のec分析基盤を0から構築する全手順",
     "created_at": "2026-04-12T22:04:07.764639",
     "status": "pending"
+  },
+  {
+    "id": "ba26af21",
+    "theme_id": "E-01",
+    "title": "GTMでGA4のeコマース計測を完全設定する手順【Shopify対応】",
+    "filename": "gtmでga4のeコマース計測を完全設定する手順shopify対応.md",
+    "article_preview": "```markdown\n---\ntitle: \"GTMでGA4のeコマース計測を完全設定する手順【Shopify対応】\"\nemoji: \"🛒\"\ntype: \"tech\"\ntopics: [\"GA4\", \"GTM\", \"Shopify\", \"ecommerce\", \"BigQuery\"]\npublished: false\n---\n\n## 「購入数は分かるけど、どこで離脱してるか分からない…」\n\nECサイトを運営していて、GA4の管理画面に「purchase」イベントだけがポツンと記録されている状態になっていませんか？\n\n商品一覧の閲覧 → 商品詳細 → カート追加 → チェックアウト → 購入。このファネル全体を計測できてはじめて「どこで売上を取りこぼしているか」が見えてきます。\n\n本記事では、Shopify＋GTM＋GA4の構成で、eコマースイベントをステップごとに設定する手順を解説します。\n\n## 前提：GA4のeコマースイベント体系\n\nGA4で推奨されているeコマースイベントは以下の通りです。\n\n| ファネル段階 | イベント名 | 発火タイミング |\n|---|---|---|\n",
+    "threads_post": "🛒 ECサイト運営してて「購入数は分かるけど、どこでお客さんが離脱してるか分からない…」って悩んでませんか？\n\nGA4にpurchaseイベントだけポツンと記録されてる状態、実はめちゃくちゃもったいないです。\n\nこの記事では、GTMを使ってGA4のeコマース計測を**ファネル全体**で設定する手順をまとめました。商品一覧→商品詳細→カート追加→チェックアウト→購入まで、離脱ポイントが丸見えになります。\n\nShopify対応の具体的な設定手順も解説してるので、「とりあえずGA4入れたけど活用できてない…」という方はぜひ。\n\n#GA4 #GTM #Shopify #ecommerce #データ分析\n\nhttps://zenn.dev/web_benriya/articles/gtmでga4のeコマース計測を完全設定する手順shopify対応",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/gtmでga4のeコマース計測を完全設定する手順shopify対応",
+    "created_at": "2026-04-13T23:30:57.797969",
+    "status": "pending"
   }
 ]
