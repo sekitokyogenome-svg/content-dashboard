@@ -229,5 +229,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/ga4移行後にデータが取れていない問題を解決するgtmデバッグ手順",
     "created_at": "2026-04-15T23:29:50.382804",
     "status": "pending"
+  },
+  {
+    "id": "d9e3006c",
+    "theme_id": "F-02",
+    "title": "WEBコンサルタントがClaude CodeでSQLを書く時間をゼロにした話",
+    "filename": "webコンサルタントがclaude-codeでsqlを書く時間をゼロにした話.md",
+    "article_preview": "```markdown\n---\ntitle: \"WEBコンサルタントがClaude CodeでSQLを書く時間をゼロにした話\"\nemoji: \"⚡\"\ntype: \"idea\"\ntopics: [\"claudecode\", \"bigquery\", \"ga4\", \"webコンサル\", \"業務効率化\"]\npublished: false\n---\n\n## 「レポート作成だけで1日が終わる」という地獄\n\nWEBコンサルタントとして独立して3年目。クライアントが増えるのは嬉しいのに、レポート作成に追われて**肝心の「提案」に時間を使えない**というジレンマに陥っていました。\n\n特にGA4×BigQueryのSQL作成。クライアントごとにテーブル構造の確認、クエリの組み立て、結果の検証…1本のレポートに平均2〜3時間かかっていました。月に10社分で約25時間。丸3営業日がSQLを書くだけで消えていたんです。\n\nこの記事では、Claude Codeを導入して**SQL作成時間を実質ゼロにした具体的なプロセス**と、ビジネスにどんなインパクトがあったかをお話しします。\n\n## Before：月25時間を",
+    "threads_post": "⚡ SQLを書く時間、ゼロにしました。\n\nWEBコンサルあるあるだと思うんですが、\n「レポート作成だけで1日が終わる」問題。\n\nGA4×BigQueryのSQL、毎回書くのしんどくないですか？\n\nClaude Codeに任せたら、SQL作成の時間がまるっとなくなって、本来やるべき「提案」に集中できるようになった話をまとめました。\n\nクライアント増えてるのにレポート地獄で疲弊してる人、たぶん刺さると思います。\n\n#ClaudeCode #BigQuery #GA4 #業務効率化 #WEBコンサル\n\nhttps://zenn.dev/web_benriya/articles/webコンサルタントがclaude-codeでsqlを書く時間をゼロにした話",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/webコンサルタントがclaude-codeでsqlを書く時間をゼロにした話",
+    "created_at": "2026-04-16T23:26:32.117185",
+    "status": "pending"
   }
 ]
