@@ -240,5 +240,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/webコンサルタントがclaude-codeでsqlを書く時間をゼロにした話",
     "created_at": "2026-04-16T23:26:32.117185",
     "status": "pending"
+  },
+  {
+    "id": "e1161adc",
+    "theme_id": "F-05",
+    "title": "非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】",
+    "filename": "非エンジニアのec経営者がclaude-codeで自走できるまで全記録.md",
+    "article_preview": "```markdown\n---\ntitle: \"非エンジニアのEC経営者がClaude Codeで自走できるまで【全記録】\"\nemoji: \"🚀\"\ntype: \"idea\"\ntopics: [\"claudecode\", \"ec\", \"ga4\", \"bigquery\", \"業務効率化\"]\npublished: false\n---\n\n## 「SQLもPythonも書けないのに、AIツールなんて使えるの？」\n\nEC経営者のAさん（40代・アパレルEC運営歴8年）から、まさにこの質問を受けたのが2024年の秋でした。\n\n月商800万円規模のShopifyストアを運営しながら、GA4のデータ分析は外注、レポート作成は手作業、広告の費用対効果の確認すらスプレッドシートで半日かかる——そんな状態からClaude Codeを導入して **約3ヶ月で「自走」できるようになった全記録** をお伝えします。\n\n## ビフォー：月40時間がデータ関連作業に消えていた\n\nAさんの導入前の状況を整理します。\n\n| 作業内容 | 月あたり所要時間 | 外注費 |\n|---|---|---|\n| GA4レポート確認・",
+    "threads_post": "🚀 SQLもPythonも書けないEC経営者が、Claude Codeで「データ分析の自走」を実現するまでの全記録を書きました。\n\n月商800万円のShopifyストアを運営しながら、GA4の分析は外注頼み…そんな状態からどう変わったのか？\n\n「AIツール気になるけど、非エンジニアの自分には無理でしょ」と思っている方にこそ読んでほしい内容です。\n\n導入のリアルなつまずきポイントも含めて、全プロセスを公開しています💡\n\n#ClaudeCode #EC運営 #GA4 #BigQuery #業務効率化\n\nhttps://zenn.dev/web_benriya/articles/非エンジニアのec経営者がclaude-codeで自走できるまで全記録",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/非エンジニアのec経営者がclaude-codeで自走できるまで全記録",
+    "created_at": "2026-04-17T23:10:55.148130",
+    "status": "pending"
   }
 ]
