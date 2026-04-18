@@ -251,5 +251,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/非エンジニアのec経営者がclaude-codeで自走できるまで全記録",
     "created_at": "2026-04-17T23:10:55.148130",
     "status": "pending"
+  },
+  {
+    "id": "a8885b0b",
+    "theme_id": "G-01",
+    "title": "Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2025年版】",
+    "filename": "gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版.md",
+    "article_preview": "```markdown\n---\ntitle: \"Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2025年版】\"\nemoji: \"🤖\"\ntype: \"tech\"\ntopics: [\"BigQuery\", \"Gemini\", \"GA4\", \"SQL\", \"AI\"]\npublished: false\n---\n\n## 「SQLが書けないけど、GA4のデータを自分で分析したい…」\n\nEC運営をしていると、こんな場面がありませんか？\n\n- 「先月のチャネル別CVRを出して」と分析担当に依頼→返ってくるまで3日\n- ChatGPTにSQL生成を頼んだが、GA4のテーブル構造と合わずエラー連発\n- BigQueryの画面は開けるけど、SQLの書き方がわからず閉じてしまう\n\n2024年後半からBigQueryに統合された **Gemini in BigQuery（旧Duet AI）** を使えば、自然言語で質問するだけでSQLが生成されます。この記事では、GA4エクスポートデータに対して実際にGeminiを使う手順と、精度を上げるためのコツを解説します。\n\n## Gemi",
+    "threads_post": "🤖 SQLが書けなくても、GA4のデータ分析を自分でできる時代が来ました。\n\nBigQueryに統合されたGeminiを使えば、「先月のチャネル別CVRを出して」と自然言語で聞くだけでSQLが自動生成されます。\n\n分析担当への依頼→3日待ち、ChatGPTで生成したSQLがGA4のテーブル構造と合わない…そんな悩み、もう終わりにしませんか？\n\nこの記事では、Gemini in BigQueryの実践的な使い方を2025年最新の情報でまとめました。EC運営者やマーケターが、自分の手でデータを引き出せるようになるための具体的な手順を解説しています。\n\n#BigQuery #Gemini #GA4 #データ分析 #SQL\n\nhttps://zenn.dev/web_benriya/articles/gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版",
+    "created_at": "2026-04-18T22:04:58.379236",
+    "status": "pending"
   }
 ]
