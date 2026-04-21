@@ -284,5 +284,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版-9d93",
     "created_at": "2026-04-20T23:29:14.125089",
     "status": "pending"
+  },
+  {
+    "id": "60e19853",
+    "theme_id": "G-01",
+    "title": "Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2025年版】",
+    "filename": "gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版-293c.md",
+    "article_preview": "```markdown\n---\ntitle: \"Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2025年版】\"\nemoji: \"🤖\"\ntype: \"tech\"\ntopics: [\"BigQuery\", \"Gemini\", \"GA4\", \"SQL\", \"AI\"]\npublished: false\n---\n\n## 「SQLが書けないから、GA4のデータを活かしきれない…」\n\nEC担当者やWEBマーケターの方から、こんな相談をよくいただきます。\n\n- GA4のデータがBigQueryに溜まっているけど、SQLが書けず放置している\n- ChatGPTにSQL生成を頼んでいるが、テーブル構造と合わずエラーになる\n- エンジニアに依頼するたびに数日かかり、施策のスピードが落ちる\n\n実は、BigQueryのコンソール上で **Gemini（旧Duet AI）** を使えば、自然言語で質問するだけで、**実テーブルの構造を理解した正確なSQL** を生成できます。\n\n本記事では、GA4エクスポートデータを題材に、Gemini in BigQueryの実践的な使い方を解説",
+    "threads_post": "🤖 SQLが書けなくても、GA4×BigQueryのデータ分析を諦めなくていい時代が来ました。\n\n「BigQueryにGA4のデータは溜まってるけど、SQL書けなくて放置してる…」という方、めちゃくちゃ多いと思います。\n\nこの記事では、BigQueryに組み込まれたGeminiを使って**自然言語からSQLを生成する方法**を実践的にまとめました。\n\nChatGPTでSQL生成を試したけどテーブル構造が合わなくてエラーになった…という経験がある方にこそ読んでほしい内容です。Gemini in BigQueryなら実テーブルのスキーマを理解した上でSQLを生成してくれるので、精度が段違いです。\n\nEC担当者・WEBマーケターの方が、エンジニアに頼らずデータを活用する第一歩になれば嬉しいです💡\n\n#BigQuery #Gemini #GA4 #SQL #データ分析\n\nhttps://zenn.dev/web_benriya/articles/gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版-293c",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版-293c",
+    "created_at": "2026-04-21T23:09:57.987840",
+    "status": "pending"
   }
 ]
