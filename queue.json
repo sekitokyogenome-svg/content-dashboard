@@ -295,5 +295,16 @@
     "zenn_url": "https://zenn.dev/web_benriya/articles/gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版-293c",
     "created_at": "2026-04-21T23:09:57.987840",
     "status": "pending"
+  },
+  {
+    "id": "82a79486",
+    "theme_id": "G-01",
+    "title": "Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】",
+    "filename": "gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版-0b1b.md",
+    "article_preview": "```markdown\n---\ntitle: \"Gemini in BigQueryで自然言語からSQLを生成する実践ガイド【2026年版】\"\nemoji: \"🤖\"\ntype: \"tech\"\ntopics: [\"bigquery\", \"gemini\", \"ga4\", \"sql\", \"ai\"]\npublished: false\n---\n\n## 「SQLが書けないから、GA4データを活用しきれない…」\n\nECサイトを運営していて、GA4のデータはBigQueryにエクスポートしている。でも、分析のたびにSQLを調べて書くのが大変——。そんな悩みを抱えるマーケターの方は多いのではないでしょうか。\n\n2025年後半にGA化したGemini in BigQueryを使えば、**日本語で質問するだけでSQLが自動生成**されます。本記事では、EC分析の実務で使える具体的なプロンプトとSQLの検証方法を解説します。\n\n## Gemini in BigQueryとは\n\nBigQueryのコンソール上で利用できるAIアシスタント機能です。自然言語で「〇〇を集計して」と入力すると、対象テーブルのスキーマを",
+    "threads_post": "🤖 SQLが書けなくても、GA4データをガッツり分析できる時代が来ました。\n\nBigQueryに標準搭載された「Gemini」を使えば、自然言語で質問するだけでSQLが自動生成されます。\n\n「GA4のデータはBigQueryに入れてるけど、分析のたびにSQL調べるのが正直しんどい…」というマーケターの方、もうその苦労は不要かもしれません。\n\nこの記事では、実際のGA4データを使って自然言語→SQL生成の手順をステップバイステップで解説しました。\n\n✅ Gemini in BigQueryの基本設定\n✅ 実務で使える自然言語プロンプトの書き方\n✅ 生成されたSQLの確認・修正のコツ\n\n非エンジニアでもデータドリブンな意思決定ができる環境を、一緒に作っていきましょう💪\n\n#BigQuery #Gemini #GA4 #データ分析 #SQL\n\nhttps://zenn.dev/web_benriya/articles/gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版-0b1b",
+    "zenn_url": "https://zenn.dev/web_benriya/articles/gemini-in-bigqueryで自然言語からsqlを生成する実践ガイド2026年版-0b1b",
+    "created_at": "2026-04-22T21:52:16.876413",
+    "status": "pending"
   }
 ]
